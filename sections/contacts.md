@@ -17,7 +17,7 @@
 **Example Request**
 
 ```shell
-curl https://api.cliniko.com/v1/contacts \
+curl https://api.au1.cliniko.com/v1/contacts \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)'
@@ -68,7 +68,7 @@ curl https://api.cliniko.com/v1/contacts \
   ],
   "total_entries": 1,
   "links": {
-    "self": "https://api.cliniko.com/v1/contacts?page=1"
+    "self": "https://api.au1.cliniko.com/v1/contacts?page=1"
   }
 }
 ```
@@ -82,7 +82,7 @@ curl https://api.cliniko.com/v1/contacts \
 **Example Request**
 
 ```shell
-curl https://api.cliniko.com/v1/contacts/1 \
+curl https://api.au1.cliniko.com/v1/contacts/1 \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)'
@@ -146,7 +146,7 @@ set it to `null`.
 **Example Request**
 
 ```shell
-curl https://api.cliniko.com/v1/contacts \
+curl https://api.au1.cliniko.com/v1/contacts \
   -u API_KEY: \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -189,7 +189,7 @@ Headers { Location: http://api.cliniko.com/contacts/1 }
   "type": "Standard",
   "type_code": 0,
   "links": {
-    "self": "http://local.cliniko.test:3000/v1/contacts/12"
+    "self": "https://api.au1.cliniko.com/v1/contacts/12"
   }
 }
 ```
@@ -209,7 +209,7 @@ set it to `null`.
 **Example Request**
 
 ```shell
-curl https://api.cliniko.com/v1/contacts/1 \
+curl https://api.au1.cliniko.com/v1/contacts/1 \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'Content-Type: application/json' \
@@ -248,7 +248,7 @@ curl https://api.cliniko.com/v1/contacts/1 \
   "type": "Standard",
   "type_code": 0,
   "links": {
-    "self": "http://local.cliniko.test:3000/v1/contacts/12"
+    "self": "https://api.au1.cliniko.com/v1/contacts/12"
   }
 }
 ```
@@ -262,7 +262,7 @@ curl https://api.cliniko.com/v1/contacts/1 \
 **Example Request**
 
 ```shell
-curl https://api.cliniko.com/v1/contacts/1 \
+curl https://api.au1.cliniko.com/v1/contacts/1 \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)' \
@@ -277,7 +277,10 @@ A status code of `204 no content` will be returned if successful
 For any route that returns a set contacts, you can filter them by:
 
 - `created_at` DateTime
+- `email` String
+- `first_name` String
 - `id` Integer
+- `last_name` String
 - `type_code` Integer
 - `updated_at` DateTime
 

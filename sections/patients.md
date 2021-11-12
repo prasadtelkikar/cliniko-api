@@ -1,10 +1,22 @@
 # Patients
 
-> Patients are the people that book in for appointments. There isn't much in Cliniko that doesn't revolve around patients.
+> Patients are the people that book in for appointments. There isn't much in
+> Cliniko that doesn't revolve around patients.
 >
-> When you're working with patient information, make sure you abide by the relevant regulations for security and privacy.
+> When you're working with patient information, make sure you abide by the
+> relevant regulations for security and privacy.
 >
-> There is a field in the patient record **accepted_privacy_policy** that stores the patient's consent to the business' own privacy policy. Values can be `null` (no response), `true` (accepted) or `false` (rejected). Please consider how this may affect you storing information on this patient.
+> A couple of fields in the patient record deserve special consideration:
+>
+> - **accepted_privacy_policy** stores the patient's consent to the business'
+> own privacy policy. Values can be `null` (no response), `true` (accepted) or
+> `false` (rejected). Please consider how this may affect you storing
+> information on this patient.
+>
+> - **time_zone** will contain a valid IANA time zone identifier if the
+>   patient's time zone has been set, or `null` if it hasn't. It can be set via
+>   the API, in which case it accepts IANA time zone identifiers.
+>
 
 - [Get Patients](#get-patients 'This will return all patients.')
 - [Get Deleted Patients](#get-deleted-patients 'This will return all deleted patients.')
@@ -12,7 +24,6 @@
 - [Get Patient](#get-patient 'This will return a specified patient.')
 - [Create Patient](#create-patient 'This will create a patient.')
 - [Update Patient](#update-patient 'This will update a patient.')
-- [Delete Patient](#delete-patient 'This will delete a patient.')
 - [Archive Patient](#archive-patient 'This will archive a patient.')
 - [Unarchive Patient](#unarchive-patient 'This will unarchive a patient.')
 
@@ -25,7 +36,7 @@
 **Example Request**
 
 ```shell
-curl https://api.cliniko.com/v1/patients \
+curl https://api.au1.cliniko.com/v1/patients \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)'
@@ -38,6 +49,7 @@ curl https://api.cliniko.com/v1/patients \
   "patients": [
     {
       "accepted_privacy_policy": true,
+      "accepted_email_marketing": true,
       "accepted_sms_marketing": false,
       "address_1": "1 Smith Street",
       "address_2": "",
@@ -71,15 +83,16 @@ curl https://api.cliniko.com/v1/patients \
       "sex": "Female to Male",
       "state": "Victoria",
       "title": "Mr",
+      "time_zone": "Australia/Melbourne",
       "updated_at": "2013-03-26T14:00:00Z",
       "concession_type": {
         "links": {
-          "self": "https://api.cliniko.com/v1/concession_types/123"
+          "self": "https://api.au1.cliniko.com/v1/concession_types/123"
         }
       },
       "referring_doctor": {
         "links": {
-          "self": "https://api.cliniko.com/v1/contacts/123"
+          "self": "https://api.au1.cliniko.com/v1/contacts/123"
         }
       },
       "patient_phone_numbers": [
@@ -94,24 +107,24 @@ curl https://api.cliniko.com/v1/patients \
       ],
       "medical_alerts": {
         "links": {
-          "self": "https://api.cliniko.com/v1/patients/1/medical_alerts?page=1"
+          "self": "https://api.au1.cliniko.com/v1/patients/1/medical_alerts?page=1"
         }
       },
       "invoices": {
         "links": {
-          "self": "https://api.cliniko.com/v1/patients/1/invoices?page=1"
+          "self": "https://api.au1.cliniko.com/v1/patients/1/invoices?page=1"
         }
       },
       "appointments": {
         "links": {
-          "self": "https://api.cliniko.com/v1/patients/1/appointments?page=1"
+          "self": "https://api.au1.cliniko.com/v1/patients/1/appointments?page=1"
         }
       },
-      "links": { "self": "https://api.cliniko.com/v1/patients/1" }
+      "links": { "self": "https://api.au1.cliniko.com/v1/patients/1" }
     }
   ],
   "total_entries": 1,
-  "links": { "self": "https://api.cliniko.com/v1/patients?page=1" }
+  "links": { "self": "https://api.au1.cliniko.com/v1/patients?page=1" }
 }
 ```
 
@@ -124,7 +137,7 @@ curl https://api.cliniko.com/v1/patients \
 **Example Request**
 
 ```shell
-curl https://api.cliniko.com/v1/patients/deleted \
+curl https://api.au1.cliniko.com/v1/patients/deleted \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)'
@@ -136,81 +149,12 @@ curl https://api.cliniko.com/v1/patients/deleted \
 {
   "patients": [
     {
-      "accepted_privacy_policy": true,
-      "accepted_sms_marketing": false,
-      "address_1": "1 Smith Street",
-      "address_2": "",
-      "address_3": "",
-      "archived_at": "2013-06-05T14:37:18Z",
-      "city": "Melbourne",
-      "country": "Australia",
-      "created_at": "2013-03-26T14:00:00Z",
-      "date_of_birth": "2001-05-26",
       "deleted_at": "2013-06-05T14:38:48Z",
-      "email": "peter@example.com",
-      "emergency_contact": "",
-      "first_name": "Peter",
-      "invoice_default_to": "Super Insurance",
-      "invoice_email": "super.insurance@example.com",
-      "invoice_extra_information": "Insurance #123456\r\nClaim #123456",
-      "gender": "Male",
-      "gender_identity": "Transgender",
-      "id": 1,
-      "last_name": "Patientman",
-      "medicare": "",
-      "medicare_reference_number": "",
-      "notes": "",
-      "appointment_notes": "",
-      "occupation": "",
-      "old_reference_id": "",
-      "post_code": "3000",
-      "receives_confirmation_emails": true,
-      "referral_source": "",
-      "reminder_type": "Email",
-      "sex": "Female to Male",
-      "state": "Victoria",
-      "title": "Mr",
-      "updated_at": "2013-03-26T14:00:00Z",
-      "concession_type": {
-        "links": {
-          "self": "https://api.cliniko.com/v1/concession_types/123"
-        }
-      },
-      "referring_doctor": {
-        "links": {
-          "self": "https://api.cliniko.com/v1/contacts/123"
-        }
-      },
-      "patient_phone_numbers": [
-        {
-          "phone_type": "Mobile",
-          "number": "61444444444"
-        },
-        {
-          "phone_type": "Home",
-          "number": "61399999999"
-        }
-      ],
-      "medical_alerts": {
-        "links": {
-          "self": "https://api.cliniko.com/v1/patients/1/medical_alerts?page=1"
-        }
-      },
-      "invoices": {
-        "links": {
-          "self": "https://api.cliniko.com/v1/patients/1/invoices?page=1"
-        }
-      },
-      "appointments": {
-        "links": {
-          "self": "https://api.cliniko.com/v1/patients/1/appointments?page=1"
-        }
-      },
-      "links": { "self": "https://api.cliniko.com/v1/patients/1" }
+      "links": { "self": "https://api.au1.cliniko.com/v1/patients/1" }
     }
   ],
   "total_entries": 1,
-  "links": { "self": "https://api.cliniko.com/v1/patients/deleted?page=1" }
+  "links": { "self": "https://api.au1.cliniko.com/v1/patients/deleted?page=1" }
 }
 ```
 
@@ -223,7 +167,7 @@ curl https://api.cliniko.com/v1/patients/deleted \
 **Example Request**
 
 ```shell
-curl https://api.cliniko.com/v1/patients/archived \
+curl https://api.au1.cliniko.com/v1/patients/archived \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)'
@@ -236,6 +180,7 @@ curl https://api.cliniko.com/v1/patients/archived \
   "patients": [
     {
       "accepted_privacy_policy": true,
+      "accepted_email_marketing": true,
       "accepted_sms_marketing": false,
       "address_1": "1 Smith Street",
       "address_2": "",
@@ -261,7 +206,7 @@ curl https://api.cliniko.com/v1/patients/archived \
       "merged_at": "2013-06-05T14:37:18Z",
       "merged_with_patient": {
         "links": {
-          "self": "https://api.cliniko.test/v1/patients/1001"
+          "self": "https://api.au1.cliniko.test/v1/patients/1001"
         }
       },
       "notes": "",
@@ -275,15 +220,16 @@ curl https://api.cliniko.com/v1/patients/archived \
       "sex": "Female to Male",
       "state": "Victoria",
       "title": "Mr",
+      "time_zone": "Australia/Melbourne",
       "updated_at": "2013-03-26T14:00:00Z",
       "concession_type": {
         "links": {
-          "self": "https://api.cliniko.com/v1/concession_types/123"
+          "self": "https://api.au1.cliniko.com/v1/concession_types/123"
         }
       },
       "referring_doctor": {
         "links": {
-          "self": "https://api.cliniko.com/v1/contacts/123"
+          "self": "https://api.au1.cliniko.com/v1/contacts/123"
         }
       },
       "patient_phone_numbers": [
@@ -298,24 +244,24 @@ curl https://api.cliniko.com/v1/patients/archived \
       ],
       "medical_alerts": {
         "links": {
-          "self": "https://api.cliniko.com/v1/patients/1/medical_alerts?page=1"
+          "self": "https://api.au1.cliniko.com/v1/patients/1/medical_alerts?page=1"
         }
       },
       "invoices": {
         "links": {
-          "self": "https://api.cliniko.com/v1/patients/1/invoices?page=1"
+          "self": "https://api.au1.cliniko.com/v1/patients/1/invoices?page=1"
         }
       },
       "appointments": {
         "links": {
-          "self": "https://api.cliniko.com/v1/patients/1/appointments?page=1"
+          "self": "https://api.au1.cliniko.com/v1/patients/1/appointments?page=1"
         }
       },
-      "links": { "self": "https://api.cliniko.com/v1/patients/1" }
+      "links": { "self": "https://api.au1.cliniko.com/v1/patients/1" }
     }
   ],
   "total_entries": 1,
-  "links": { "self": "https://api.cliniko.com/v1/patients/archived?page=1" }
+  "links": { "self": "https://api.au1.cliniko.com/v1/patients/archived?page=1" }
 }
 ```
 
@@ -328,7 +274,7 @@ curl https://api.cliniko.com/v1/patients/archived \
 **Example Request**
 
 ```shell
-curl https://api.cliniko.com/v1/patients/1 \
+curl https://api.au1.cliniko.com/v1/patients/1 \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)'
@@ -339,6 +285,7 @@ curl https://api.cliniko.com/v1/patients/1 \
 ```json
 {
   "accepted_privacy_policy": true,
+  "accepted_email_marketing": true,
   "accepted_sms_marketing": false,
   "address_1": "1 Smith Street",
   "address_2": "",
@@ -372,15 +319,16 @@ curl https://api.cliniko.com/v1/patients/1 \
   "sex": "Female to Male",
   "state": "Victoria",
   "title": "Mr",
+  "time_zone": "Australia/Melbourne",
   "updated_at": "2013-03-26T14:00:00Z",
   "concession_type": {
     "links": {
-      "self": "https://api.cliniko.com/v1/concession_types/123"
+      "self": "https://api.au1.cliniko.com/v1/concession_types/123"
     }
   },
   "referring_doctor": {
     "links": {
-      "self": "https://api.cliniko.com/v1/contacts/123"
+      "self": "https://api.au1.cliniko.com/v1/contacts/123"
     }
   },
   "patient_phone_numbers": [
@@ -395,20 +343,20 @@ curl https://api.cliniko.com/v1/patients/1 \
   ],
   "medical_alerts": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/1/medical_alerts?page=1"
+      "self": "https://api.au1.cliniko.com/v1/patients/1/medical_alerts?page=1"
     }
   },
   "invoices": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/1/invoices?page=1"
+      "self": "https://api.au1.cliniko.com/v1/patients/1/invoices?page=1"
     }
   },
   "appointments": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/1/appointments?page=1"
+      "self": "https://api.au1.cliniko.com/v1/patients/1/appointments?page=1"
     }
   },
-  "links": { "self": "https://api.cliniko.com/v1/patients/1" }
+  "links": { "self": "https://api.au1.cliniko.com/v1/patients/1" }
 }
 ```
 
@@ -425,7 +373,7 @@ curl https://api.cliniko.com/v1/patients/1 \
 **Example Request**
 
 ```shell
-curl https://api.cliniko.com/v1/patients \
+curl https://api.au1.cliniko.com/v1/patients \
   -u API_KEY: \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -443,6 +391,7 @@ Headers { Location: http://api.cliniko.com/patients/1 }
 ```json
 {
   "accepted_privacy_policy": true,
+  "accepted_email_marketing": true,
   "accepted_sms_marketing": false,
   "address_1": "1 Smith Street",
   "address_2": "",
@@ -476,24 +425,25 @@ Headers { Location: http://api.cliniko.com/patients/1 }
   "sex": "Female to Male",
   "state": "",
   "title": "",
+  "time_zone": null,
   "updated_at": "2013-03-26T14:00:00Z",
   "patient_phone_numbers": [],
   "medical_alerts": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/1/medical_alerts?page=1"
+      "self": "https://api.au1.cliniko.com/v1/patients/1/medical_alerts?page=1"
     }
   },
   "invoices": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/1/invoices?page=1"
+      "self": "https://api.au1.cliniko.com/v1/patients/1/invoices?page=1"
     }
   },
   "appointments": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/1/appointments?page=1"
+      "self": "https://api.au1.cliniko.com/v1/patients/1/appointments?page=1"
     }
   },
-  "links": { "self": "https://api.cliniko.com/v1/patients/1" }
+  "links": { "self": "https://api.au1.cliniko.com/v1/patients/1" }
 }
 ```
 
@@ -510,7 +460,7 @@ Headers { Location: http://api.cliniko.com/patients/1 }
 **Example Request**
 
 ```shell
-curl https://api.cliniko.com/v1/patients/1 \
+curl https://api.au1.cliniko.com/v1/patients/1 \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'Content-Type: application/json' \
@@ -524,6 +474,7 @@ curl https://api.cliniko.com/v1/patients/1 \
 ```json
 {
   "accepted_privacy_policy": true,
+  "accepted_email_marketing": true,
   "accepted_sms_marketing": false,
   "address_1": "1 Smith Street",
   "address_2": "",
@@ -557,6 +508,7 @@ curl https://api.cliniko.com/v1/patients/1 \
   "sex": "Female to Male",
   "state": "Victoria",
   "title": "Mr",
+  "time_zone": "Australia/Melbourne",
   "updated_at": "2013-03-26T14:00:00Z",
   "patient_phone_numbers": [
     {
@@ -570,41 +522,22 @@ curl https://api.cliniko.com/v1/patients/1 \
   ],
   "medical_alerts": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/1/medical_alerts?page=1"
+      "self": "https://api.au1.cliniko.com/v1/patients/1/medical_alerts?page=1"
     }
   },
   "invoices": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/1/invoices?page=1"
+      "self": "https://api.au1.cliniko.com/v1/patients/1/invoices?page=1"
     }
   },
   "appointments": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/1/appointments?page=1"
+      "self": "https://api.au1.cliniko.com/v1/patients/1/appointments?page=1"
     }
   },
-  "links": { "self": "https://api.cliniko.com/v1/patients/1" }
+  "links": { "self": "https://api.au1.cliniko.com/v1/patients/1" }
 }
 ```
-
-## Delete Patient
-
-**Resources**
-
-- `DELETE /patients/:id` delete a patient
-
-**Example Request**
-
-```shell
-curl https://api.cliniko.com/v1/patients/1 \
-  -u API_KEY: \
-  -H 'Accept: application/json' \
-  -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)' \
-  -X DELETE
-```
-
-**Example Response**
-A status code of `204 no content` will be returned if successful
 
 ## Archive Patient
 
@@ -615,7 +548,7 @@ A status code of `204 no content` will be returned if successful
 **Example Request**
 
 ```shell
-curl https://api.cliniko.com/v1/patients/1/archive \
+curl https://api.au1.cliniko.com/v1/patients/1/archive \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)' \
@@ -634,7 +567,7 @@ A status code of `204 no content` will be returned if successful
 **Example Request**
 
 ```shell
-curl https://api.cliniko.com/v1/patients/1/unarchive \
+curl https://api.au1.cliniko.com/v1/patients/1/unarchive \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)' \
@@ -646,6 +579,7 @@ curl https://api.cliniko.com/v1/patients/1/unarchive \
 ```json
 {
   "accepted_privacy_policy": true,
+  "accepted_email_marketing": true,
   "accepted_sms_marketing": false,
   "address_1": "1 Smith Street",
   "address_2": "",
@@ -679,6 +613,7 @@ curl https://api.cliniko.com/v1/patients/1/unarchive \
   "sex": "Female to Male",
   "state": "Victoria",
   "title": "Mr",
+  "time_zone": "Australia/Melbourne",
   "updated_at": "2013-03-26T14:00:00Z",
   "patient_phone_numbers": [
     {
@@ -692,20 +627,20 @@ curl https://api.cliniko.com/v1/patients/1/unarchive \
   ],
   "medical_alerts": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/1/medical_alerts?page=1"
+      "self": "https://api.au1.cliniko.com/v1/patients/1/medical_alerts?page=1"
     }
   },
   "invoices": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/1/invoices?page=1"
+      "self": "https://api.au1.cliniko.com/v1/patients/1/invoices?page=1"
     }
   },
   "appointments": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/1/appointments?page=1"
+      "self": "https://api.au1.cliniko.com/v1/patients/1/appointments?page=1"
     }
   },
-  "links": { "self": "https://api.cliniko.com/v1/patients/1" }
+  "links": { "self": "https://api.au1.cliniko.com/v1/patients/1" }
 }
 ```
 

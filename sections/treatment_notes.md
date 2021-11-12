@@ -18,7 +18,7 @@ Get Treatment Notes
 
 **Example Request**
 ```shell
-curl https://api.cliniko.com/v1/treatment_notes \
+curl https://api.au1.cliniko.com/v1/treatment_notes \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)'
@@ -80,27 +80,27 @@ curl https://api.cliniko.com/v1/treatment_notes \
       "author_name": "Natasha Hermiston",
       "patient": {
         "links": {
-          "self": "https://api.cliniko.com/v1/patients/123"
+          "self": "https://api.au1.cliniko.com/v1/patients/123"
         }
       },
       "practitioner": {
         "links": {
-          "self": "https://api.cliniko.com/v1/practitioners/456"
+          "self": "https://api.au1.cliniko.com/v1/practitioners/456"
         }
       },
       "treatment_note_template": {
         "links": {
-          "self": "https://api.cliniko.com/v1/treatment_note_templates/789"
+          "self": "https://api.au1.cliniko.com/v1/treatment_note_templates/789"
         }
       },
       "links": {
-        "self": "https://api.cliniko.com/v1/treatment_notes/1"
+        "self": "https://api.au1.cliniko.com/v1/treatment_notes/1"
       }
     }
   ],
   "total_entries": 1,
   "links": {
-    "self": "https://api.cliniko.com/v1/treatment_notes?page=1"
+    "self": "https://api.au1.cliniko.com/v1/treatment_notes?page=1"
   }
 }
 ```
@@ -113,7 +113,7 @@ Get Deleted Treatment Notes
 
 **Example Request**
 ```shell
-curl https://api.cliniko.com/v1/treatment_notes/deleted \
+curl https://api.au1.cliniko.com/v1/treatment_notes/deleted \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)'
@@ -175,27 +175,27 @@ curl https://api.cliniko.com/v1/treatment_notes/deleted \
       "author_name": "Natasha Hermiston",
       "patient": {
         "links": {
-          "self": "https://api.cliniko.com/v1/patients/123"
+          "self": "https://api.au1.cliniko.com/v1/patients/123"
         }
       },
       "practitioner": {
         "links": {
-          "self": "https://api.cliniko.com/v1/practitioners/456"
+          "self": "https://api.au1.cliniko.com/v1/practitioners/456"
         }
       },
       "treatment_note_template": {
         "links": {
-          "self": "https://api.cliniko.com/v1/treatment_note_templates/789"
+          "self": "https://api.au1.cliniko.com/v1/treatment_note_templates/789"
         }
       },
       "links": {
-        "self": "https://api.cliniko.com/v1/treatment_notes/1"
+        "self": "https://api.au1.cliniko.com/v1/treatment_notes/1"
       }
     }
   ],
   "total_entries": 1,
   "links": {
-    "self": "https://api.cliniko.com/v1/treatment_notes/deleted?page=1"
+    "self": "https://api.au1.cliniko.com/v1/treatment_notes/deleted?page=1"
   }
 }
 ```
@@ -208,7 +208,7 @@ Get Treatment Note
 
 **Example Request**
 ```shell
-curl https://api.cliniko.com/v1/treatment_notes/1 \
+curl https://api.au1.cliniko.com/v1/treatment_notes/1 \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)'
@@ -268,21 +268,21 @@ curl https://api.cliniko.com/v1/treatment_notes/1 \
   "author_name": "Natasha Hermiston",
   "patient": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/123"
+      "self": "https://api.au1.cliniko.com/v1/patients/123"
     }
   },
   "practitioner": {
     "links": {
-      "self": "https://api.cliniko.com/v1/practitioners/456"
+      "self": "https://api.au1.cliniko.com/v1/practitioners/456"
     }
   },
   "treatment_note_template": {
     "links": {
-      "self": "https://api.cliniko.com/v1/treatment_note_templates/789"
+      "self": "https://api.au1.cliniko.com/v1/treatment_note_templates/789"
     }
   },
   "links": {
-    "self": "https://api.cliniko.com/v1/treatment_notes/1"
+    "self": "https://api.au1.cliniko.com/v1/treatment_notes/1"
   }
 }
 ```
@@ -299,12 +299,12 @@ In addition, you may link a treatment note to an appointment by adding the `book
 
 **Example Request**
 ```shell
-curl https://api.cliniko.com/v1/treatment_notes \
+curl https://api.au1.cliniko.com/v1/treatment_notes \
   -u API_KEY: \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)' \
-  -d '{ "draft": true, "patient_id": 123, "booking_id": 987, "treatment_note_template_id": 789, "content": "{\"sections\": [{\"name\": \"Section 1\", \"questions\": [{\"name\": \"Question 1\", \"type\": \"text\", \"answer\": \"The answer is 42\"}]}]}" }' \
+  -d '{ "draft": true, "patient_id": 123, "booking_id": 987, "treatment_note_template_id": 789, "content": {"sections": [{"name": "Section 1", "questions": [{"name": "Question 1", "type": "text", "answer": "The answer is 42"}]}]} }' \
   -X POST
 ```
 **Example Response**
@@ -336,26 +336,26 @@ Headers { Location: http://api.cliniko.com/treatment_notes/1 }
   "author_name": "Natasha Hermiston",
   "patient": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/123"
+      "self": "https://api.au1.cliniko.com/v1/patients/123"
     }
   },
   "booking": {
     "links": {
-      "self": "https://api.cliniko.com/v1/bookings/987"
+      "self": "https://api.au1.cliniko.com/v1/bookings/987"
     }
   },
   "practitioner": {
     "links": {
-      "self": "https://api.cliniko.com/v1/practitioners/456"
+      "self": "https://api.au1.cliniko.com/v1/practitioners/456"
     }
   },
   "treatment_note_template": {
     "links": {
-      "self": "https://api.cliniko.com/v1/treatment_note_templates/789"
+      "self": "https://api.au1.cliniko.com/v1/treatment_note_templates/789"
     }
   },
   "links": {
-    "self": "https://api.cliniko.com/v1/treatment_notes/1"
+    "self": "https://api.au1.cliniko.com/v1/treatment_notes/1"
   }
 }
 ```
@@ -367,12 +367,12 @@ Update Treatment Note
 
 **Example Request**
 ```shell
-curl https://api.cliniko.com/v1/treatment_notes/1 \
+curl https://api.au1.cliniko.com/v1/treatment_notes/1 \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'Content-Type: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)' \
-  -d '{ "draft": false, "content": "{\"sections\": [{\"name\": \"Section 1\", \"questions\": [{\"name\": \"Question 1\", \"type\": \"text\", \"answer\": \"The answer is not 42\"}]}]}" }' \
+  -d '{ "draft": false, "content": {"sections": [{"name": "Section 1", "questions": [{"name": "Question 1", "type": "text", "answer": "The answer is not 42"}]}]} }' \
   -X PUT
 ```
 **Example Response**
@@ -401,21 +401,21 @@ curl https://api.cliniko.com/v1/treatment_notes/1 \
   "author_name": "Natasha Hermiston",
   "patient": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/123"
+      "self": "https://api.au1.cliniko.com/v1/patients/123"
     }
   },
   "practitioner": {
     "links": {
-      "self": "https://api.cliniko.com/v1/practitioners/456"
+      "self": "https://api.au1.cliniko.com/v1/practitioners/456"
     }
   },
   "treatment_note_template": {
     "links": {
-      "self": "https://api.cliniko.com/v1/treatment_note_templates/789"
+      "self": "https://api.au1.cliniko.com/v1/treatment_note_templates/789"
     }
   },
   "links": {
-    "self": "https://api.cliniko.com/v1/treatment_notes/1"
+    "self": "https://api.au1.cliniko.com/v1/treatment_notes/1"
   }
 }
 ```
@@ -427,7 +427,7 @@ Delete Treatment Note
 
 **Example Request**
 ```shell
-curl https://api.cliniko.com/v1/treatment_notes/1 \
+curl https://api.au1.cliniko.com/v1/treatment_notes/1 \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)' \
@@ -464,6 +464,7 @@ sections | array | An array of section objects | Not required. An empty array is
 Property | Type | Accepted Values | Notes
 ------------ | ------------- | ------------- | -------------
 name | string | A string of 255 or fewer characters | Not required. If there is no name, this property should be omitted.
+description | string | A string of 10,000 or fewer characters | Not required. If there is no description, this property should be omitted.
 questions | array | An array of question objects | Not required. An empty array is not valid. If there are no questions, this property should be omitted.
 
 **Question Object**

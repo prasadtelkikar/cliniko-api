@@ -20,7 +20,7 @@ Get Individual Appointments
 
 **Example Request**
 ```shell
-curl https://api.cliniko.com/v1/individual_appointments \
+curl https://api.au1.cliniko.com/v1/individual_appointments \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)'
@@ -37,9 +37,10 @@ curl https://api.cliniko.com/v1/individual_appointments \
       "booking_ip_address": null,
       "cancellation_note": null,
       "cancellation_reason": null,
+      "cancellation_reason_description": "",
       "conflicts": {
         "links": {
-          "self": "https://api.cliniko.com/v1/individual_appointments/1/conflicts"
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1/conflicts"
         }
       },
       "did_not_arrive": false,
@@ -59,38 +60,38 @@ curl https://api.cliniko.com/v1/individual_appointments \
       "cancelled_at": null,
       "appointment_type": {
         "links": {
-          "self": "https://api.cliniko.com/v1/appointment_types/2"
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/2"
         }
       },
       "business": {
         "links": {
-          "self": "https://api.cliniko.com/v1/businesses/1"
+          "self": "https://api.au1.cliniko.com/v1/businesses/1"
         }
       },
       "practitioner": {
         "links": {
-          "self": "https://api.cliniko.com/v1/practitioners/1"
+          "self": "https://api.au1.cliniko.com/v1/practitioners/1"
           }
       },
       "patient": {
         "links": {
-          "self": "https://api.cliniko.com/v1/patients/82"
+          "self": "https://api.au1.cliniko.com/v1/patients/82"
         }
       },
       "attendees": {
         "links": {
-          "self": "https://api.cliniko.com/v1/individual_appointments/1/attendees"
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1/attendees"
         }
       },
       "links": {
-        "self": "https://api.cliniko.com/v1/individual_appointments/1"
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1"
       }
     }
   ],
   "total_entries": 952,
   "links": {
-    "self": "https://api.cliniko.com/v1/individual_appointments?page=1",
-    "next": "https://api.cliniko.com/v1/individual_appointments?page=2"
+    "self": "https://api.au1.cliniko.com/v1/individual_appointments?page=1",
+    "next": "https://api.au1.cliniko.com/v1/individual_appointments?page=2"
   }
 }
 ```
@@ -103,7 +104,7 @@ Get Deleted Individual Appointments
 
 **Example Request**
 ```shell
-curl https://api.cliniko.com/v1/individual_appointments/deleted \
+curl https://api.au1.cliniko.com/v1/individual_appointments/deleted \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)'
@@ -120,9 +121,10 @@ curl https://api.cliniko.com/v1/individual_appointments/deleted \
       "booking_ip_address": null,
       "cancellation_note": null,
       "cancellation_reason": null,
+      "cancellation_reason_description": "",
       "conflicts": {
         "links": {
-          "self": "https://api.cliniko.com/v1/individual_appointments/1/conflicts"
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1/conflicts"
         }
       },
       "did_not_arrive": false,
@@ -142,37 +144,37 @@ curl https://api.cliniko.com/v1/individual_appointments/deleted \
       "cancelled_at": null,
       "appointment_type": {
         "links": {
-          "self": "https://api.cliniko.com/v1/appointment_types/2"
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/2"
         }
       },
       "business": {
         "links": {
-          "self": "https://api.cliniko.com/v1/businesses/1"
+          "self": "https://api.au1.cliniko.com/v1/businesses/1"
         }
       },
       "practitioner": {
         "links": {
-          "self": "https://api.cliniko.com/v1/practitioners/1"
+          "self": "https://api.au1.cliniko.com/v1/practitioners/1"
           }
       },
       "patient": {
         "links": {
-          "self": "https://api.cliniko.com/v1/patients/82"
+          "self": "https://api.au1.cliniko.com/v1/patients/82"
         }
       },
       "attendees": {
         "links": {
-          "self": "https://api.cliniko.com/v1/individual_appointments/1/attendees"
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1/attendees"
         }
       },
       "links": {
-        "self": "https://api.cliniko.com/v1/individual_appointments/1"
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1"
       }
     }
   ],
   "total_entries": 1,
   "links": {
-    "self": "https://api.cliniko.com/v1/individual_appointments/deleted?page=1",
+    "self": "https://api.au1.cliniko.com/v1/individual_appointments/deleted?page=1",
   }
 }
 ```
@@ -185,7 +187,7 @@ Get Cancelled Individual Appointments
 
 **Example Request**
 ```shell
-curl https://api.cliniko.com/v1/individual_appointments/cancelled \
+curl https://api.au1.cliniko.com/v1/individual_appointments/cancelled \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)'
@@ -200,11 +202,12 @@ curl https://api.cliniko.com/v1/individual_appointments/cancelled \
       "created_at": "2016-06-28T21:33:26Z",
       "updated_at": "2016-07-22T15:10:08Z",
       "booking_ip_address": null,
-      "cancellation_note": 'Last minute cancellation',
+      "cancellation_note": "Last minute cancellation",
       "cancellation_reason": 50,
+      "cancellation_reason_description": "Other",
       "conflicts": {
         "links": {
-          "self": "https://api.cliniko.com/v1/individual_appointments/1/conflicts"
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1/conflicts"
         }
       },
       "did_not_arrive": false,
@@ -224,38 +227,38 @@ curl https://api.cliniko.com/v1/individual_appointments/cancelled \
       "cancelled_at": "2016-07-22T15:10:08Z",
       "appointment_type": {
         "links": {
-          "self": "https://api.cliniko.com/v1/appointment_types/2"
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/2"
         }
       },
       "business": {
         "links": {
-          "self": "https://api.cliniko.com/v1/businesses/1"
+          "self": "https://api.au1.cliniko.com/v1/businesses/1"
         }
       },
       "practitioner": {
         "links": {
-          "self": "https://api.cliniko.com/v1/practitioners/1"
+          "self": "https://api.au1.cliniko.com/v1/practitioners/1"
           }
       },
       "patient": {
         "links": {
-          "self": "https://api.cliniko.com/v1/patients/82"
+          "self": "https://api.au1.cliniko.com/v1/patients/82"
         }
       },
       "attendees": {
         "links": {
-          "self": "https://api.cliniko.com/v1/individual_appointments/1/attendees"
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1/attendees"
         }
       },
       "links": {
-        "self": "https://api.cliniko.com/v1/individual_appointments/1"
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1"
       }
     }
   ],
   "total_entries": 952,
   "links": {
-    "self": "https://api.cliniko.com/v1/individual_appointments?page=1",
-    "next": "https://api.cliniko.com/v1/individual_appointments?page=2"
+    "self": "https://api.au1.cliniko.com/v1/individual_appointments?page=1",
+    "next": "https://api.au1.cliniko.com/v1/individual_appointments?page=2"
   }
 }
 ```
@@ -268,7 +271,7 @@ Get Individual Appointment
 
 **Example Request**
 ```shell
-curl https://api.cliniko.com/v1/individual_appointments/1 \
+curl https://api.au1.cliniko.com/v1/individual_appointments/1 \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)'
@@ -283,9 +286,10 @@ curl https://api.cliniko.com/v1/individual_appointments/1 \
   "booking_ip_address": null,
   "cancellation_note": null,
   "cancellation_reason": null,
+  "cancellation_reason_description": "",
   "conflicts": {
     "links": {
-      "self": "https://api.cliniko.com/v1/individual_appointments/1/conflicts"
+      "self": "https://api.au1.cliniko.com/v1/individual_appointments/1/conflicts"
     }
   },
   "did_not_arrive": false,
@@ -305,31 +309,31 @@ curl https://api.cliniko.com/v1/individual_appointments/1 \
   "cancelled_at": null,
   "appointment_type": {
     "links": {
-      "self": "https://api.cliniko.com/v1/appointment_types/2"
+      "self": "https://api.au1.cliniko.com/v1/appointment_types/2"
     }
   },
   "business": {
     "links": {
-      "self": "https://api.cliniko.com/v1/businesses/1"
+      "self": "https://api.au1.cliniko.com/v1/businesses/1"
     }
   },
   "practitioner": {
     "links": {
-      "self": "https://api.cliniko.com/v1/practitioners/1"
+      "self": "https://api.au1.cliniko.com/v1/practitioners/1"
       }
   },
   "patient": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/82"
+      "self": "https://api.au1.cliniko.com/v1/patients/82"
     }
   },
   "attendees": {
     "links": {
-      "self": "https://api.cliniko.com/v1/individual_appointments/1/attendees"
+      "self": "https://api.au1.cliniko.com/v1/individual_appointments/1/attendees"
     }
   },
   "links": {
-    "self": "https://api.cliniko.com/v1/individual_appointments/1"
+    "self": "https://api.au1.cliniko.com/v1/individual_appointments/1"
   }
 }
 ```
@@ -342,7 +346,7 @@ Get Conflicts
 
 **Example Request**
 ```shell
-curl https://api.cliniko.com/v1/individual_appointments/1/conflicts \
+curl https://api.au1.cliniko.com/v1/individual_appointments/1/conflicts \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)'
@@ -368,7 +372,7 @@ If not provided, the ends_at is automatically set based upon the duration of the
 
 **Example Request**
 ```shell
-curl https://api.cliniko.com/v1/individual_appointments \
+curl https://api.au1.cliniko.com/v1/individual_appointments \
   -u API_KEY: \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -378,7 +382,7 @@ curl https://api.cliniko.com/v1/individual_appointments \
 ```
 **Example Response**
 ```
-Headers { Location: https://api.cliniko.com/individual_appointments/1 }
+Headers { Location: https://api.au1.cliniko.com/individual_appointments/1 }
 ```
 ```json
 {
@@ -388,9 +392,10 @@ Headers { Location: https://api.cliniko.com/individual_appointments/1 }
   "booking_ip_address": null,
   "cancellation_note": null,
   "cancellation_reason": null,
+  "cancellation_reason_description": "",
   "conflicts": {
     "links": {
-      "self": "https://api.cliniko.com/v1/individual_appointments/1/conflicts"
+      "self": "https://api.au1.cliniko.com/v1/individual_appointments/1/conflicts"
     }
   },
   "did_not_arrive": false,
@@ -410,31 +415,31 @@ Headers { Location: https://api.cliniko.com/individual_appointments/1 }
   "cancelled_at": null,
   "appointment_type": {
     "links": {
-      "self": "https://api.cliniko.com/v1/appointment_types/1"
+      "self": "https://api.au1.cliniko.com/v1/appointment_types/1"
     }
   },
   "business": {
     "links": {
-      "self": "https://api.cliniko.com/v1/businesses/1"
+      "self": "https://api.au1.cliniko.com/v1/businesses/1"
     }
   },
   "practitioner": {
     "links": {
-      "self": "https://api.cliniko.com/v1/practitioners/1"
+      "self": "https://api.au1.cliniko.com/v1/practitioners/1"
       }
   },
   "patient": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/1"
+      "self": "https://api.au1.cliniko.com/v1/patients/1"
     }
   },
   "attendees": {
     "links": {
-      "self": "https://api.cliniko.com/v1/individual_appointments/1/attendees"
+      "self": "https://api.au1.cliniko.com/v1/individual_appointments/1/attendees"
     }
   },
   "links": {
-    "self": "https://api.cliniko.com/v1/individual_appointments/1"
+    "self": "https://api.au1.cliniko.com/v1/individual_appointments/1"
   }
 }
 ```
@@ -450,7 +455,7 @@ If ends_at is specified and its value is null, it is automatically set based upo
 
 **Example Request**
 ```shell
-curl https://api.cliniko.com/v1/individual_appointments/1 \
+curl https://api.au1.cliniko.com/v1/individual_appointments/1 \
   -u API_KEY: \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -467,9 +472,10 @@ curl https://api.cliniko.com/v1/individual_appointments/1 \
   "booking_ip_address": null,
   "cancellation_note": null,
   "cancellation_reason": null,
+  "cancellation_reason_description": "",
   "conflicts": {
     "links": {
-      "self": "https://api.cliniko.com/v1/individual_appointments/1/conflicts"
+      "self": "https://api.au1.cliniko.com/v1/individual_appointments/1/conflicts"
     }
   },
   "did_not_arrive": false,
@@ -489,31 +495,31 @@ curl https://api.cliniko.com/v1/individual_appointments/1 \
   "cancelled_at": null,
   "appointment_type": {
     "links": {
-      "self": "https://api.cliniko.com/v1/appointment_types/1"
+      "self": "https://api.au1.cliniko.com/v1/appointment_types/1"
     }
   },
   "business": {
     "links": {
-      "self": "https://api.cliniko.com/v1/businesses/1"
+      "self": "https://api.au1.cliniko.com/v1/businesses/1"
     }
   },
   "practitioner": {
     "links": {
-      "self": "https://api.cliniko.com/v1/practitioners/1"
+      "self": "https://api.au1.cliniko.com/v1/practitioners/1"
       }
   },
   "patient": {
     "links": {
-      "self": "https://api.cliniko.com/v1/patients/1"
+      "self": "https://api.au1.cliniko.com/v1/patients/1"
     }
   },
   "attendees": {
     "links": {
-      "self": "https://api.cliniko.com/v1/individual_appointments/1/attendees"
+      "self": "https://api.au1.cliniko.com/v1/individual_appointments/1/attendees"
     }
   },
   "links": {
-    "self": "https://api.cliniko.com/v1/individual_appointments/1"
+    "self": "https://api.au1.cliniko.com/v1/individual_appointments/1"
   }
 }
 ```
@@ -525,7 +531,7 @@ Delete Individual Appointment
 
 **Example Request**
 ```shell
-curl https://api.cliniko.com/v1/individual_appointments/1 \
+curl https://api.au1.cliniko.com/v1/individual_appointments/1 \
   -u API_KEY: \
   -H 'Accept: application/json' \
   -H 'User-Agent: APP_VENDOR_NAME (APP_VENDOR_EMAIL)' \
@@ -545,7 +551,7 @@ The `cancellation_reason` information is mandatory.
 
 **Example Request**
 ```shell
-curl https://api.cliniko.com/v1/individual_appointments/1/cancel \
+curl https://api.au1.cliniko.com/v1/individual_appointments/1/cancel \
   -u API_KEY: \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -561,6 +567,7 @@ A status code of `204 no content` will be returned if successful
 * `10` Feeling better
 * `20` Condition worse
 * `30` Sick
+* `31` COVID-19 related
 * `40` Away
 * `50` Other
 * `60` Work
